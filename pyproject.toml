@@ -7,6 +7,10 @@ authors = ["es_pisarchuk <es_pisarchuk@mail.ru>"]
 [tool.poetry.dependencies]
 python = "^3.8"
 Django = "^3.2.9"
+pymorphy2 = "^0.9.1"
+djangorestframework = "^3.12.4"
+djangorestframework-xml = "^2.0.0"
+django-admin-tools = "^0.9.1"
 
 [tool.poetry.dev-dependencies]
 

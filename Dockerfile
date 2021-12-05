@@ -1,11 +1,11 @@
-FROM python:3.9-alpine
+FROM python:3
 
 ENV PYTHONUNBUFFERED 1
 
-WORKDIR /articles
+WORKDIR /usr/src/articles
 
-COPY poetry.lock pyproject.toml /articles/
+COPY poetry.lock pyproject.toml /usr/src/articles/
 
-RUN pip3 install poetry
-
-RUN poetry install
+RUN pip install --upgrade pip  \
+ && pip install poetry \
+ && poetry install
