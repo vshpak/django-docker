@@ -1,32 +1,23 @@
 from rest_framework import serializers
 
-from pools.models import Publisher, Journal, Article, Book
+from pools.models import Publisher, Journal, Book
 
 
 class PublisherSerializer(serializers.ModelSerializer):
     class Meta:
         model = Publisher
-        fields = ['id', 'name', 'address', 'journal_name']
+        fields = ['id', 'name', 'address']
 
 
 class JournalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Journal
         fields = ['id', 'name', 'article_set']
-        # fields = ['id', 'question_text', 'choices']
-
-    # choices = ChoiceSerializer(many=True, read_only=True, source='choice_set')
 
 
-class ArticleSerializer(serializers.ModelSerializer):
+class BookSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Article
+        model = Book
         fields = ['id', 'name']
 
 
-# class BookSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Book
-#         fields = ['id', 'question', 'choice_text', 'count']
-#
-#

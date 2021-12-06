@@ -31,5 +31,4 @@ def define_plural_and_change(value, count=0):
     morph = pymorphy2.MorphAnalyzer(lang='ru')
     genger = str(morph.parse(value)[0].tag).split(',')[2].split(' ')[0]
     params = get_case(count, genger)
-    print(str(morph.parse(value)[0].tag).split(',')[2].split(' ')[0])
     return morph.parse(value)[0].inflect(params).word.lower()

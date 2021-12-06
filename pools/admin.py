@@ -27,13 +27,11 @@ class I18nLabel():
         return wrapper
 
     def get_title_by_name(self, name, request={}, obj_name = u''):
-        print(name)
         if 'add_view' == name:
             return _('Add %s') % morph.parse(obj_name)[0].inflect({'accs'}).word.lower()
         elif 'change_view' == name:
             return _('Change %s') % morph.parse(obj_name)[0].inflect({'accs'}).word.lower()
         elif 'changelist_view' == name:
-            print(obj_name)
             if 'pop' in request.GET:
                 title = _('Select %s')
             else:
