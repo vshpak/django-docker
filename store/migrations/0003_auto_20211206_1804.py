@@ -6,7 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('pools', '0002_auto_20211204_1111'),
+        ('store', '0002_auto_20211204_1111'),
     ]
 
     operations = [

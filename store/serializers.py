@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from pools.models import Publisher, Journal, Book
+from store.models import Publisher, Journal, Book, Article
 
 
 class PublisherSerializer(serializers.ModelSerializer):
@@ -12,12 +12,18 @@ class PublisherSerializer(serializers.ModelSerializer):
 class JournalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Journal
-        fields = ['id', 'name', 'article_set']
+        fields = ['id', 'name', 'article_set', 'publisher']
+
+
+class ArticleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Article
+        fields = ['id', 'name', 'journal']
 
 
 class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
-        fields = ['id', 'name']
+        fields = ['id', 'name', 'publisher']
 
 

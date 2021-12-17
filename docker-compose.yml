@@ -5,6 +5,6 @@ services:
     command: "poetry run python manage.py runserver 0.0.0.0:8000"
     build: .
     volumes:
-      - .:/usr/src/articles
+      - .:/usr/src/app
     ports:
       - "8000:8000"

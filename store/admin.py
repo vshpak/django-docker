@@ -1,4 +1,4 @@
-from pools.models import Publisher, Journal, Article, Book
+from store.models import Publisher, Journal, Article, Book
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import capfirst

@@ -3,7 +3,7 @@ This file was generated with the custommenu management command, it contains
 the classes for the admin menu, you can customize this class as you want.
 
 To activate your custom menu add the following to your settings.py::
-    ADMIN_TOOLS_MENU = 'articles.menu.CustomMenu'
+    ADMIN_TOOLS_MENU = 'app.menu.CustomMenu'
 """
 
 try:
@@ -20,7 +20,7 @@ from admin_tools.menu import items, Menu
 
 class CustomMenu(Menu):
     """
-    Custom Menu for articles admin site.
+    Custom Menu for app admin site.
     """
     def __init__(self, **kwargs):
         Menu.__init__(self, **kwargs)

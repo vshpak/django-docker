@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('pools', '0001_initial'),
+        ('store', '0001_initial'),
     ]
 
     operations = [
@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='article',
             name='journal',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='pools.journal', verbose_name='Журнал'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='store.journal', verbose_name='Журнал'),
         ),
         migrations.AlterField(
             model_name='article',
@@ -45,7 +45,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='book',
             name='publisher',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='pools.publisher', verbose_name='Издательство'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='store.publisher', verbose_name='Издательство'),
         ),
         migrations.AlterField(
             model_name='journal',
@@ -55,7 +55,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='journal',
             name='publisher',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='pools.publisher', verbose_name='Издательство'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='store.publisher', verbose_name='Издательство'),
         ),
         migrations.AlterField(
             model_name='publisher',

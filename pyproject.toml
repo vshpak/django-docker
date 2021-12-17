@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "articles"
+name = "app"
 version = "0.1.0"
 description = ""
 authors = ["es_pisarchuk <es_pisarchuk@mail.ru>"]
@@ -11,6 +11,8 @@ pymorphy2 = "^0.9.1"
 djangorestframework = "^3.12.4"
 djangorestframework-xml = "^2.0.0"
 django-admin-tools = "^0.9.1"
+pytest = "^6.2.5"
+pytest-django = "^4.5.2"
 
 [tool.poetry.dev-dependencies]
 

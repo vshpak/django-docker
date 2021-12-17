@@ -4,6 +4,16 @@ from django.db import migrations, models
 import django.db.models.deletion
 
 
+def add_to_newmodel(apps, schema_editor):
+    '''
+    Добавление данных в новую модель
+    '''
+    new_model = apps.get_model("store", "Publisher")
+    new_model.objects.create(
+        field_1='Field_1 content',
+        field_2='Field_2 content'
+    )
+
 class Migration(migrations.Migration):
 
     initial = True
@@ -25,7 +35,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=200)),
-                ('publisher', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='pools.publisher')),
+                ('publisher', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='store.publisher')),
             ],
         ),
         migrations.CreateModel(
@@ -33,7 +43,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=200)),
-                ('publisher', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='pools.publisher')),
+                ('publisher', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='store.publisher')),
             ],
         ),
         migrations.CreateModel(
@@ -41,7 +51,10 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=200)),
-                ('journal', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='pools.journal')),
+                ('journal', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='store.journal')),
             ],
         ),
+        # Добавляем данные после создания модели NewModel
+        # migrations.RunPython(add_to_newmodel,
+        #                      reverse_code=migrations.RunPython.noop)
     ]
