@@ -18,7 +18,7 @@ class JournalSerializer(serializers.ModelSerializer):
 class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Article
-        fields = ['id', 'name', 'journal']
+        fields = ['id', 'name', 'journal', 'authors']
 
 
 class BookSerializer(serializers.ModelSerializer):
