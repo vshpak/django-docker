@@ -53,7 +53,7 @@ class Article(models.Model):
     journal = models.ForeignKey(
         Journal, on_delete=models.CASCADE, verbose_name="Журнал"
     )
-    authors = models.ManyToManyField(Author, null=True)
+    authors = models.ManyToManyField(Author)
 
     def __str__(self):
         return f"{self.name}"
@@ -68,7 +68,7 @@ class Book(models.Model):
     publisher = models.ForeignKey(
         Publisher, on_delete=models.CASCADE, verbose_name="Издательство"
     )
-    authors = models.ManyToManyField(Author, null=True)
+    authors = models.ManyToManyField(Author)
 
     def __str__(self):
         return f"{self.name}"

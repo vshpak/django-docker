@@ -2,7 +2,13 @@ version: "3"
 
 services:
   app:
-    command: "poetry run python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - KAGGLE_USERNAME=${KAGGLE_USERNAME}
+      - KAGGLE_KEY=${KAGGLE_KEY}
+    command: bash -c "
+        poetry run python manage.py migrate
+        && poetry run python manage.py runserver 0.0.0.0:8000
+      "
     build: .
     volumes:
       - .:/usr/src/app

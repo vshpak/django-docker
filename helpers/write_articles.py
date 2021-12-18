@@ -25,7 +25,7 @@ def get_articles_data():
 
             code = article_code.split("-")[0]
 
-            if code[0] not in ["D"]:
+            if code[0] not in ["C", "D"]:
                 continue
 
             if code not in articles.keys():
@@ -116,3 +116,4 @@ def write_data_to_model(apps, schema_editor):
             articles[category][code]["model"].authors.set(
                 articles[category][code]["authors"]
             )
+            articles[category][code]["model"].save()
