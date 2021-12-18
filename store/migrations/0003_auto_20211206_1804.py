@@ -6,24 +6,27 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('store', '0002_auto_20211204_1111'),
+        ("store", "0002_auto_20211204_1111"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='article',
-            options={'verbose_name': 'статья', 'verbose_name_plural': 'статьи'},
+            name="article",
+            options={"verbose_name": "статья", "verbose_name_plural": "статьи"},
         ),
         migrations.AlterModelOptions(
-            name='book',
-            options={'verbose_name': 'книга', 'verbose_name_plural': 'книги'},
+            name="book",
+            options={"verbose_name": "книга", "verbose_name_plural": "книги"},
         ),
         migrations.AlterModelOptions(
-            name='journal',
-            options={'verbose_name': 'журнал', 'verbose_name_plural': 'журналы'},
+            name="journal",
+            options={"verbose_name": "журнал", "verbose_name_plural": "журналы"},
         ),
         migrations.AlterModelOptions(
-            name='publisher',
-            options={'verbose_name': 'издательство', 'verbose_name_plural': 'издательства'},
+            name="publisher",
+            options={
+                "verbose_name": "издательство",
+                "verbose_name_plural": "издательства",
+            },
         ),
     ]

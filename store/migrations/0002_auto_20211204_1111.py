@@ -7,64 +7,79 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('store', '0001_initial'),
+        ("store", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='article',
-            options={'verbose_name': 'Статья', 'verbose_name_plural': 'Статьи'},
+            name="article",
+            options={"verbose_name": "Статья", "verbose_name_plural": "Статьи"},
         ),
         migrations.AlterModelOptions(
-            name='book',
-            options={'verbose_name': 'Книга', 'verbose_name_plural': 'Книги'},
+            name="book",
+            options={"verbose_name": "Книга", "verbose_name_plural": "Книги"},
         ),
         migrations.AlterModelOptions(
-            name='journal',
-            options={'verbose_name': 'Журнал', 'verbose_name_plural': 'Журналы'},
+            name="journal",
+            options={"verbose_name": "Журнал", "verbose_name_plural": "Журналы"},
         ),
         migrations.AlterModelOptions(
-            name='publisher',
-            options={'verbose_name': 'Издательство', 'verbose_name_plural': 'Издательства'},
+            name="publisher",
+            options={
+                "verbose_name": "Издательство",
+                "verbose_name_plural": "Издательства",
+            },
         ),
         migrations.AlterField(
-            model_name='article',
-            name='journal',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='store.journal', verbose_name='Журнал'),
+            model_name="article",
+            name="journal",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                to="store.journal",
+                verbose_name="Журнал",
+            ),
         ),
         migrations.AlterField(
-            model_name='article',
-            name='name',
-            field=models.CharField(max_length=200, verbose_name='Название'),
+            model_name="article",
+            name="name",
+            field=models.CharField(max_length=200, verbose_name="Название"),
         ),
         migrations.AlterField(
-            model_name='book',
-            name='name',
-            field=models.CharField(max_length=200, verbose_name='Название'),
+            model_name="book",
+            name="name",
+            field=models.CharField(max_length=200, verbose_name="Название"),
         ),
         migrations.AlterField(
-            model_name='book',
-            name='publisher',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='store.publisher', verbose_name='Издательство'),
+            model_name="book",
+            name="publisher",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                to="store.publisher",
+                verbose_name="Издательство",
+            ),
         ),
         migrations.AlterField(
-            model_name='journal',
-            name='name',
-            field=models.CharField(max_length=200, verbose_name='Название'),
+            model_name="journal",
+            name="name",
+            field=models.CharField(max_length=200, verbose_name="Название"),
         ),
         migrations.AlterField(
-            model_name='journal',
-            name='publisher',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='store.publisher', verbose_name='Издательство'),
+            model_name="journal",
+            name="publisher",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                to="store.publisher",
+                verbose_name="Издательство",
+            ),
         ),
         migrations.AlterField(
-            model_name='publisher',
-            name='address',
-            field=models.CharField(max_length=200, verbose_name='Адрес'),
+            model_name="publisher",
+            name="address",
+            field=models.CharField(max_length=200, verbose_name="Адрес"),
         ),
         migrations.AlterField(
-            model_name='publisher',
-            name='name',
-            field=models.CharField(max_length=200, verbose_name='Название'),
+            model_name="publisher",
+            name="name",
+            field=models.CharField(max_length=200, verbose_name="Название"),
         ),
     ]
