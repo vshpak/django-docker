@@ -63,3 +63,10 @@ def test_patch_book__positive(client, book):
 
     assert response.status_code == status.HTTP_200_OK
     assert updated_book["name"] == book_name
+
+
+@pytest.mark.django_db
+def test_delete_book__positive(client, book):
+    response = client.delete(f"/store/books/{book.pk}/")
+
+    assert response.status_code == status.HTTP_204_NO_CONTENT

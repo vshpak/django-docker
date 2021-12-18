@@ -74,3 +74,11 @@ def test_patch_article__positive(client, article):
 
     assert response.status_code == status.HTTP_200_OK
     assert updated_article["name"] == article_name
+
+
+@pytest.mark.django_db
+def test_delete_articles__positive(client, journal):
+    response = client.delete(f"/store/journals/{journal.pk}/")
+
+    assert response.status_code == status.HTTP_204_NO_CONTENT
+

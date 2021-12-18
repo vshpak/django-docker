@@ -61,3 +61,11 @@ def test_patch_publisher__positive(client, publisher):
 
     assert response.status_code == status.HTTP_200_OK
     assert updated_publisher["name"] == publisher_name
+
+
+@pytest.mark.django_db
+def test_delete_publisher__positive(client, publisher):
+    response = client.delete(f"/store/publishers/{publisher.pk}/")
+
+    assert response.status_code == status.HTTP_204_NO_CONTENT
+
