@@ -1,7 +1,6 @@
 import pytest
 import json
 from rest_framework import status
-from store.serializers import ArticleSerializer
 
 
 @pytest.mark.django_db
@@ -32,11 +31,10 @@ def test_post_article__positive(client, journal, author):
         {"name": article_name, "journal": journal.pk, "authors": [author.pk]}
     )
     response = client.post("/store/articles/", data, content_type="application/json")
-    created_article = dict(ArticleSerializer().to_internal_value(response.data))
 
     assert response.status_code == status.HTTP_201_CREATED
-    assert created_article["name"] == article_name
-    assert created_article["journal"].name == journal.name
+    assert response.data["name"] == article_name
+    assert response.data["journal"] == journal.pk
 
 
 @pytest.mark.django_db
@@ -55,10 +53,9 @@ def test_put_article__positive(client, article, journal, author):
         data,
         content_type="application/json",
     )
-    updated_article = dict(ArticleSerializer().to_internal_value(response.data))
 
     assert response.status_code == status.HTTP_200_OK
-    assert updated_article["name"] == article_name
+    assert response.data["name"] == article_name
 
 
 @pytest.mark.django_db
@@ -70,10 +67,9 @@ def test_patch_article__positive(client, article):
         data,
         content_type="application/json",
     )
-    updated_article = dict(ArticleSerializer().to_internal_value(response.data))
 
     assert response.status_code == status.HTTP_200_OK
-    assert updated_article["name"] == article_name
+    assert response.data["name"] == article_name
 
 
 @pytest.mark.django_db
@@ -81,4 +77,3 @@ def test_delete_articles__positive(client, journal):
     response = client.delete(f"/store/journals/{journal.pk}/")
 
     assert response.status_code == status.HTTP_204_NO_CONTENT
-

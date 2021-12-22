@@ -1,7 +1,6 @@
 import json
 import pytest
 from rest_framework import status
-from store.serializers import JournalSerializer
 
 
 @pytest.mark.django_db
@@ -25,11 +24,10 @@ def test_post_journal__positive(client, publisher):
         {"name": journal_name, "article_set": [], "publisher": publisher.pk}
     )
     response = client.post("/store/journals/", data, content_type="application/json")
-    created_journal = dict(JournalSerializer().to_internal_value(response.data))
 
     assert response.status_code == status.HTTP_201_CREATED
-    assert created_journal["name"] == journal_name
-    assert created_journal["publisher"].name == publisher.name
+    assert response.data["name"] == journal_name
+    assert response.data["publisher"] == publisher.pk
 
 
 @pytest.mark.django_db
@@ -48,10 +46,9 @@ def test_put_journal__positive(client, journal):
         data,
         content_type="application/json",
     )
-    updated_journal = dict(JournalSerializer().to_internal_value(response.data))
 
     assert response.status_code == status.HTTP_200_OK
-    assert updated_journal["name"] == journal_name
+    assert response.data["name"] == journal_name
 
 
 @pytest.mark.django_db
@@ -63,10 +60,9 @@ def test_patch_journal__positive(client, journal):
         data,
         content_type="application/json",
     )
-    updated_journal = dict(JournalSerializer().to_internal_value(response.data))
 
     assert response.status_code == status.HTTP_200_OK
-    assert updated_journal["name"] == journal_name
+    assert response.data["name"] == journal_name
 
 
 @pytest.mark.django_db

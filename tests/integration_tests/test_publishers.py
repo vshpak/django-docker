@@ -1,7 +1,6 @@
 import json
 import pytest
 from rest_framework import status
-from store.serializers import PublisherSerializer
 
 
 @pytest.mark.django_db
@@ -24,10 +23,9 @@ def test_post_publisher__positive(client):
     publisher_address = "Владивосток"
     data = json.dumps({"name": publisher_name, "address": publisher_address})
     response = client.post("/store/publishers/", data, content_type="application/json")
-    created_publisher = dict(PublisherSerializer().to_internal_value(response.data))
 
     assert response.status_code == status.HTTP_201_CREATED
-    assert created_publisher["name"] == publisher_name
+    assert response.data["name"] == publisher_name
 
 
 @pytest.mark.django_db
@@ -42,10 +40,9 @@ def test_put_publisher__positive(client, publisher):
         data,
         content_type="application/json",
     )
-    updated_publisher = dict(PublisherSerializer().to_internal_value(response.data))
 
     assert response.status_code == status.HTTP_200_OK
-    assert updated_publisher["name"] == publisher_name
+    assert response.data["name"] == publisher_name
 
 
 @pytest.mark.django_db
@@ -57,10 +54,9 @@ def test_patch_publisher__positive(client, publisher):
         data,
         content_type="application/json",
     )
-    updated_publisher = dict(PublisherSerializer().to_internal_value(response.data))
 
     assert response.status_code == status.HTTP_200_OK
-    assert updated_publisher["name"] == publisher_name
+    assert response.data["name"] == publisher_name
 
 
 @pytest.mark.django_db
@@ -68,4 +64,3 @@ def test_delete_publisher__positive(client, publisher):
     response = client.delete(f"/store/publishers/{publisher.pk}/")
 
     assert response.status_code == status.HTTP_204_NO_CONTENT
-
