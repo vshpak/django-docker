@@ -2,13 +2,15 @@ version: "3"
 
 services:
   app:
-    environment:
-      - KAGGLE_USERNAME=${KAGGLE_USERNAME}
-      - KAGGLE_KEY=${KAGGLE_KEY}
-    command: bash -c "
-        poetry run python manage.py migrate
-        && poetry run python manage.py runserver 0.0.0.0:8000
-      "
+    env_file:
+      - .env
+    command:
+        - /bin/bash
+        - -c
+        - |
+          poetry run python manage.py migrate
+          poetry run python manage.py createsuperuser --noinput --username $DJANGO_SUPERUSER_USERNAME --email $DJANGO_SUPERUSER_EMAIL
+          poetry run python manage.py runserver 0.0.0.0:8000
     build: .
     volumes:
       - .:/usr/src/app
