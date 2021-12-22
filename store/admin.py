@@ -1,4 +1,6 @@
-from store.models import Publisher, Journal, Article, Book
+from django import forms
+
+from store.models import Publisher, Journal, Article, Book, Author
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import capfirst
@@ -98,11 +100,25 @@ class JournalAdmin(admin.ModelAdmin):
     list_display = ["id", "name", "publisher"]
 
 
+class AuthorModelForm(forms.ModelForm):
+    class Meta:
+        model = Author
+        exclude = ['id']
+
+    def __init__(self, *args, **kwargs):
+        forms.ModelForm.__init__(self, *args, **kwargs)
+        self.fields['authors'].queryset = Author.objects.all()
+
+
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ["id", "name", "journal"]
+    form = AuthorModelForm
+    filter_horizontal = ('authors',)
 
 
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
     list_display = ["id", "name", "publisher"]
+    form = AuthorModelForm
+    filter_horizontal = ('authors',)

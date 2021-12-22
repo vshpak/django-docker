@@ -45,10 +45,8 @@ class Article(models.Model):
         verbose_name_plural = "статьи"
 
     name = models.CharField("Название", max_length=200)
-    journal = models.ForeignKey(
-        Journal, on_delete=models.CASCADE, verbose_name="Журнал"
-    )
-    authors = models.ManyToManyField(Author)
+    journal = models.ForeignKey(Journal, on_delete=models.CASCADE, verbose_name="Журнал")
+    authors = models.ManyToManyField(Author, verbose_name="авторы")
 
     def __str__(self):
         return f"{self.name}"
@@ -63,7 +61,7 @@ class Book(models.Model):
     publisher = models.ForeignKey(
         Publisher, on_delete=models.CASCADE, verbose_name="Издательство"
     )
-    authors = models.ManyToManyField(Author)
+    authors = models.ManyToManyField(Author, verbose_name="авторы")
 
     def __str__(self):
         return f"{self.name}"

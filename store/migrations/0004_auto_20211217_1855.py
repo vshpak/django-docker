@@ -38,12 +38,12 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="article",
             name="authors",
-            field=models.ManyToManyField(to="store.Author"),
+            field=models.ManyToManyField(to="store.Author", verbose_name='авторы'),
         ),
         migrations.AddField(
             model_name="book",
             name="authors",
-            field=models.ManyToManyField(to="store.Author"),
+            field=models.ManyToManyField(to="store.Author", verbose_name='авторы'),
         ),
         migrations.RunPython(
             write_data_to_model, reverse_code=migrations.RunPython.noop
