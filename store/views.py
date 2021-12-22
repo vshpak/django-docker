@@ -16,7 +16,7 @@ class PublisherViewSet(viewsets.ModelViewSet):
 
 
 class JournalViewSet(viewsets.ModelViewSet):
-    queryset = Journal.objects.all()
+    queryset = Journal.objects.prefetch_related('article_set')
     serializer_class = JournalSerializer
 
     @action(detail=True)
