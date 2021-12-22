@@ -21,7 +21,7 @@ def client(user):
 @pytest.fixture
 def author():
     return Author.objects.create(
-        username="tolstoi", first_name="Лев", last_name="Толстой"
+        first_name="Лев", last_name="Толстой"
     )
 
 

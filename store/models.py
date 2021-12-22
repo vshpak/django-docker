@@ -18,16 +18,11 @@ class Author(models.Model):
         verbose_name = "автор"
         verbose_name_plural = "авторы"
 
-    username = models.CharField("Логин", max_length=200)
     first_name = models.CharField("Имя пользователя", max_length=200)
     last_name = models.CharField("Фамилия", max_length=200)
 
     def __str__(self):
-        return f"{self.username}"
-
-
-# class PublicationType(models.Model):
-#     name = models.CharField(max_length=200)
+        return f"{self.first_name} {self.last_name}"
 
 
 class Journal(models.Model):

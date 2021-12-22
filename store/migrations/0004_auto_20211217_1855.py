@@ -24,7 +24,6 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
-                ("username", models.CharField(max_length=200, verbose_name="Логин")),
                 (
                     "first_name",
                     models.CharField(max_length=200, verbose_name="Имя пользователя"),
